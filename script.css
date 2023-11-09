@@ -1,5 +1,5 @@
 body {
-  front-family: Arial, sans-serif;
+  font-family: Arial, sans-serif;
   text-align: center;
 }
 
@@ -15,4 +15,8 @@ input {
 .completed {
   text-decoration: line-through;
   color: grey;
+}
+
+#task-category {
+  margin: 10px;
 }
