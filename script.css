@@ -14,9 +14,13 @@ input {
 
 .completed {
   text-decoration: line-through;
-  color: grey;
+  color: red;
 }
 
 #task-category {
   margin: 10px;
+}
+
+#task-list li button {
+  margin-left: 10px;
 }

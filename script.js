@@ -8,21 +8,28 @@ function addTask() {
 
   // if(taskInput.value.trim() !== '') {
   if(taskValue !== '') {
-    let listItem = document.createElement('li');
-    listItem.textContent = 
-    `${taskValue} - Category: ${categoryValue}`;
-    taskList.appendChild(listItem);
+    // let listItem = document.createElement('li');
+    // listItem.textContent = 
+    // `${taskValue} - Category: ${categoryValue}`;
+    // listItem.addEventListener('click', () => toggleTaskComplete(listItem));
+    // taskList.appendChild(listItem);
+    addTaskToDOM(taskValue, categoryValue);
     taskInput.value = '';
     categorySelect.selectedIndex = 0;
 
-    listItem.addEventListener('click', () => toggleTaskComplete(listItem));
   }
 
-  list.addEventListener('click', () => toggleTaskComplete(listItem));
+  // list.addEventListener('click', () => toggleTaskComplete(listItem));
 }
 
-function toggleTaskComplete(taskItem) {
-  taskItem.classList.toggle('completed');
+document.getElementById('add-task-btn').addEventListener('click', addTask);
+
+// function toggleTaskComplete(taskItem) {
+//   taskItem.classList.toggle('completed');
+// }
+
+const toggleTaskComplete =(listItem) => {
+  listItem.classList.toggle('completed');
 }
 
 const fetchTasks = () => {
@@ -53,7 +60,29 @@ const addTaskToDOM = (taskContent, taskCategory) => {
   let listItem = document.createElement('li');
   // listItem.textContent = taskContent;
   listItem.textContent = `${taskContent} - Category: ${taskCategory}`;
+
+  let editButton = document.createElement('button');
+
+  editButton.textContent = 'Edit';
+  editButton.onclick = () => editTask(editButton);
+
+  let deleteButton = document.createElement('button');
+
+  deleteButton.textContent = 'Delete';
+  deleteButton.onclick = () => deleteTask(deleteButton);
+
+  listItem.appendChild(editButton);
+  listItem.appendChild(deleteButton);
+
   taskList.appendChild(listItem);
+}
+
+const editTask = (button) => {
+  console.log('Edit Task', button.parentNode.textContent);
+}
+
+const deleteTask = (button) => {
+  button.parentNode.remove();
 }
 
 // const saveTask = (taskContent) => {
